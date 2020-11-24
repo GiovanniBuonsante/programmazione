@@ -1,0 +1,75 @@
+/*Autore Giovanni Buonsante*/
+
+#include<stdio.h>
+#define SIZE 5
+void fun_ord_decre(int c[]);
+void fun_ord_cre(int c[]);
+int main()
+{
+	int vettoreB[SIZE] = { 0 };
+	int vettoreA[SIZE] = { 0 };
+	int i, j, tmp;
+	printf("Prego inserire %d numeri:\n", SIZE);
+	//inizializzazzione del vettore con valori inseriti in input dall'utente
+	for (i = 0; i < SIZE; i++) {
+		scanf_s("%d", &vettoreA[i]);
+	}
+	//copia i valori del vettoreA nel vettoreB
+	for (i = 0; i < SIZE; i++) {
+		vettoreB[i] = vettoreA[i];
+	}
+	printf("\n---------------------------------------\n");
+	//stampa a video del vettore inserito
+	for (i = 0; i < SIZE; i++) {
+		printf("%d ", vettoreA[i]);
+	}
+
+	printf("\n---------------------------------------\n");
+
+	fun_ord_cre(vettoreA);
+	//stampa a video del vettore ordinato
+	printf("Vettore ordinato in ordine crescente\n");
+	for (i = 0; i < SIZE; i++) {
+		printf("%d ", vettoreA[i]);
+	}
+
+	printf("\n----------------------------------------\n");
+
+	fun_ord_decre(vettoreB);
+	//stampa a video del vettore ordinato
+	printf("\nVettore ordinato in ordine decrescente\n");
+	for (i = 0; i < SIZE; i++) {
+		printf("%d ", vettoreB[i]);
+	}
+	return 0;
+}
+//funzione per ordinare il vettore in ordine crescente
+void fun_ord_cre(int c[])
+{
+	int i, j, tmp;
+
+	for (j = 1; j < SIZE - 1; j++) {
+		for (i = 0; i < SIZE - 1; i++) {
+			if (c[i] > c[i + 1]) {
+				tmp = c[i];
+				c[i] = c[i + 1];
+				c[i + 1] = tmp;
+			}
+		}
+	}
+}
+//funzione per ordinare il vettore in ordine decrescente
+void fun_ord_decre(int c[])
+{
+	int i, j, tmp;
+
+	for (j = 1; j < SIZE - 1; j++) {
+		for (i = 0; i < SIZE - 1; i++) {
+			if (c[i] < c[i + 1]) {
+				tmp = c[i];
+				c[i] = c[i + 1];
+				c[i + 1] = tmp;
+			}
+		}
+	}
+}
